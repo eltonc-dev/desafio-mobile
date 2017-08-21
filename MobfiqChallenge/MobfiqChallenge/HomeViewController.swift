@@ -12,6 +12,10 @@ class HomeViewController: UIViewController ,
     UICollectionViewDelegate ,
     UICollectionViewDataSource {
 
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var qtdProducts = 10
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,7 +32,7 @@ class HomeViewController: UIViewController ,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.qtdProducts
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -64,6 +68,23 @@ class HomeViewController: UIViewController ,
         
         return cell
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        
+        if( scrollView.contentOffset.y  > scrollView.contentSize.height / 2 ) {
+            
+            
+            if( !self.collectionView.isLoadingContent() ) {
+                self.collectionView.startLoadingIndicator()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                    self.qtdProducts = self.qtdProducts + 10
+                    self.collectionView.stopLoadingIndicator()
+                })
+            }
+            
+        }
     }
 
 }

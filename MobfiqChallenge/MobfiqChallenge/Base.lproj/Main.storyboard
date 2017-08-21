@@ -197,17 +197,17 @@
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rlN-mh-GIO" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="37s-zq-3mu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mEf-LK-CUe" secondAttribute="trailing" constant="-16" id="8US-jQ-2gn"/>
-                            <constraint firstItem="mEf-LK-CUe" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="GDj-hj-ds2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mEf-LK-CUe" secondAttribute="trailing" constant="-16" id="4QJ-OZ-awo"/>
                             <constraint firstItem="rlN-mh-GIO" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="44" id="Iw7-jR-USF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rlN-mh-GIO" secondAttribute="trailing" constant="-16" id="Myc-nG-28E"/>
                             <constraint firstItem="mEf-LK-CUe" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="-30" id="fLp-Dy-ziY"/>
-                            <constraint firstItem="rlN-mh-GIO" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="lcm-Js-zcv"/>
+                            <constraint firstItem="mEf-LK-CUe" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="jwC-yh-Ozb"/>
                             <constraint firstItem="rlN-mh-GIO" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="yOm-Dh-Qav"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="collectionView" destination="rlN-mh-GIO" id="29T-YU-tPi"/>
                         <segue destination="vRS-XI-RD2" kind="show" identifier="goToProducts" id="Rss-vO-la9"/>
                     </connections>
                 </viewController>
@@ -291,8 +291,8 @@
                         <viewControllerLayoutGuide type="top" id="AHT-72-e96"/>
                         <viewControllerLayoutGuide type="bottom" id="ylz-IM-LMC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="m4w-MQ-Dnw">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="m4w-MQ-Dnw">
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4Vb-dE-BPS">
@@ -343,7 +343,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="krb-yW-CDv">
-                                <rect key="frame" x="0.0" y="39" width="375" height="564"/>
+                                <rect key="frame" x="0.0" y="39" width="375" height="515"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="nbx-Bi-TkS">
                                     <size key="itemSize" width="150" height="300"/>
@@ -709,7 +709,6 @@
         <!--Navigation Controller-->
         <scene sceneID="rh9-gG-ao3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xY8-ig-ine" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="vRS-XI-RD2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="MDf-lK-pYs">
@@ -726,6 +725,7 @@
                         <segue destination="IGI-VL-Xpc" kind="relationship" relationship="rootViewController" id="SNO-ab-yi1"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xY8-ig-ine" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1252" y="-1113.1934032983509"/>
         </scene>
@@ -740,6 +740,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Gxz-gk-4tl"/>
-        <segue reference="2aE-eb-q6a"/>
+        <segue reference="Rss-vO-la9"/>
     </inferredMetricsTieBreakers>
 </document>

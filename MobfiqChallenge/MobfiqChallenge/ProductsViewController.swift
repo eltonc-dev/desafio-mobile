@@ -11,6 +11,8 @@ import UIKit
 class ProductsViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout {
 
+    var qtdProducts = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +32,7 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return qtdProducts
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -53,6 +55,13 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
             wid = (self.view.frame.size.width  / 2)
         }
         
+        if( indexPath.row == self.qtdProducts - 4 ) {
+            qtdProducts = qtdProducts + 10
+            collectionView.startLoadingIndicator()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10), execute: {
+                collectionView.stopLoadingIndicator()
+            })
+        }
         
         return CGSize(width: wid , height: wid * 2 )
     }
@@ -70,6 +79,9 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
         
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("Scroll")
+    }
  
 
 }

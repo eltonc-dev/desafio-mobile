@@ -18,11 +18,12 @@ class SearchViewController: UIViewController , UISearchBarDelegate , UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.searchbar.becomeFirstResponder()
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.searchbar.becomeFirstResponder()
     }
 
     // MARK: - Search
