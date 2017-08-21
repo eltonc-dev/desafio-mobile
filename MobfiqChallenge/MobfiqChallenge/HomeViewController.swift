@@ -7,24 +7,29 @@
 //
 
 import UIKit
+import Foundation
 
 class HomeViewController: UIViewController ,
     UICollectionViewDelegate ,
-    UICollectionViewDataSource {
+    UICollectionViewDataSource ,
+    FavoriteHandler{
 
+    var favoriteProducts : [String] = [String]()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var qtdProducts = 10
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        if let favorites =  UserDefaults.standard.array(forKey: Constants.UserDefault.KEY_FAVORITE_PRODUCTS) as? [String] {
+            self.favoriteProducts = favorites
+        }
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Collection
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -62,9 +67,17 @@ class HomeViewController: UIViewController ,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cellId = "product_cell"
-        var cell : UICollectionViewCell!
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        var cell : ProductCollectionViewCell!
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProductCollectionViewCell
         
+        cell.favoriteHandler = self
+        cell.favoriteButton.tag = indexPath.row
+
+        if( self.favoriteProducts.contains( String(indexPath.row) ) ) {
+            cell.favoriteButton.isSelected = true
+        } else {
+            cell.favoriteButton.isSelected = false
+        }
         
         return cell
         
@@ -86,6 +99,27 @@ class HomeViewController: UIViewController ,
             
         }
     }
+    
+    // MARK: - FavoriteHandler Methods
+    func saveAsFavorite(_ element: Any) {
+        
+        self.favoriteProducts.append( String((element as! UIButton).tag) )
+        UserDefaults.standard.set(self.favoriteProducts, forKey: Constants.UserDefault.KEY_FAVORITE_PRODUCTS)
+        
+    }
+    
+    func removeFromFavorite(_ element: Any) {
+
+        if( self.favoriteProducts.contains( String((element as! UIButton).tag) ) ) {
+            let index = self.favoriteProducts.index(of: String((element as! UIButton).tag)  )
+            if(index! < 0 ) {
+                self.favoriteProducts.remove(at: index!)
+                UserDefaults.standard.set(self.favoriteProducts, forKey: Constants.UserDefault.KEY_FAVORITE_PRODUCTS)
+            }
+        }
+        
+    }
+    
 
 }
 

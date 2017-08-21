@@ -51,7 +51,7 @@
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product_cell" id="fOL-18-sdk">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product_cell" id="fOL-18-sdk" customClass="ProductCollectionViewCell" customModule="MobfiqChallenge" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="150" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -111,9 +111,13 @@
                                                             <state key="normal" title="like" image="favorite_off">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <state key="selected" image="favorite_on"/>
                                                             <state key="highlighted" image="favorite_on">
                                                                 <color key="titleColor" red="0.99945014715194702" green="0.29166367650032043" blue="0.0014201609883457422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="toggleFavorite:" destination="fOL-18-sdk" eventType="touchUpInside" id="gfm-dZ-U1h"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cafeteira douce gusto vermelha" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-bV-kWx">
                                                             <rect key="frame" x="8" y="200" width="134" height="43"/>
@@ -186,6 +190,17 @@
                                             <constraint firstItem="Z7j-79-0LF" firstAttribute="centerY" secondItem="fOL-18-sdk" secondAttribute="centerY" id="NOg-6c-TEv"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Z7j-79-0LF" secondAttribute="trailing" constant="-8" id="wfT-D7-R2f"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="favoriteButton" destination="iup-dM-res" id="lgs-eZ-Jbw"/>
+                                            <outlet property="loader" destination="d3S-ca-nWR" id="xaU-Ey-c4W"/>
+                                            <outlet property="productBestPaymentType" destination="MKQ-rQ-MMl" id="eB8-qU-Gvn"/>
+                                            <outlet property="productImageView" destination="ydg-9I-UdQ" id="I8D-YS-6V3"/>
+                                            <outlet property="productName" destination="1gO-bV-kWx" id="DSE-wq-TsE"/>
+                                            <outlet property="productOldPrice" destination="idC-Ky-LK5" id="atu-qh-Hgo"/>
+                                            <outlet property="productPrice" destination="gsn-Pt-fwk" id="IdA-nR-lUK"/>
+                                            <outlet property="promotionPercentage" destination="PTq-1d-ihn" id="opO-lQ-boO"/>
+                                            <outlet property="promotionView" destination="bvd-XK-GkJ" id="2Vl-jV-w43"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

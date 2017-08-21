@@ -19,6 +19,9 @@
 		8336B7A61F489012009E7990 /* SubcategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336B7A51F489012009E7990 /* SubcategoryViewController.swift */; };
 		8336B7A91F494315009E7990 /* ProductsHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8336B7A81F494314009E7990 /* ProductsHeaderCollectionViewCell.swift */; };
 		836B84351F4A4BE000B747BD /* EndlessCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B84341F4A4BE000B747BD /* EndlessCollectionView.swift */; };
+		836B843A1F4A66BF00B747BD /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B84391F4A66BF00B747BD /* ProductCollectionViewCell.swift */; };
+		836B843D1F4A6E5C00B747BD /* FavoriteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B843C1F4A6E5C00B747BD /* FavoriteHandler.swift */; };
+		836B843F1F4A74C200B747BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B843E1F4A74C200B747BD /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		8336B7A51F489012009E7990 /* SubcategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcategoryViewController.swift; sourceTree = "<group>"; };
 		8336B7A81F494314009E7990 /* ProductsHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		836B84341F4A4BE000B747BD /* EndlessCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndlessCollectionView.swift; sourceTree = "<group>"; };
+		836B84391F4A66BF00B747BD /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		836B843C1F4A6E5C00B747BD /* FavoriteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteHandler.swift; sourceTree = "<group>"; };
+		836B843E1F4A74C200B747BD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,8 @@
 		8336B7871F47BA50009E7990 /* MobfiqChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				836B843B1F4A6E2800B747BD /* Protocols */,
+				836B84361F4A648300B747BD /* Utils */,
 				836B84331F4A4B6900B747BD /* Extensions */,
 				8336B7A71F4942E6009E7990 /* Elements */,
 				8336B79C1F47D4CE009E7990 /* Controllers */,
@@ -97,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				8336B7A81F494314009E7990 /* ProductsHeaderCollectionViewCell.swift */,
+				836B84391F4A66BF00B747BD /* ProductCollectionViewCell.swift */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -107,6 +116,22 @@
 				836B84341F4A4BE000B747BD /* EndlessCollectionView.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		836B84361F4A648300B747BD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				836B843E1F4A74C200B747BD /* Constants.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		836B843B1F4A6E2800B747BD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				836B843C1F4A6E5C00B747BD /* FavoriteHandler.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,12 +209,15 @@
 			files = (
 				8336B78D1F47BA50009E7990 /* CategoryViewController.swift in Sources */,
 				8336B7891F47BA50009E7990 /* AppDelegate.swift in Sources */,
+				836B843A1F4A66BF00B747BD /* ProductCollectionViewCell.swift in Sources */,
 				8336B7A01F47DF06009E7990 /* SearchViewController.swift in Sources */,
 				8336B78B1F47BA50009E7990 /* HomeViewController.swift in Sources */,
 				8336B7A21F488FE5009E7990 /* ProductsViewController.swift in Sources */,
+				836B843F1F4A74C200B747BD /* Constants.swift in Sources */,
 				8336B7A91F494315009E7990 /* ProductsHeaderCollectionViewCell.swift in Sources */,
 				8336B7A41F488FFB009E7990 /* ProductDetailViewController.swift in Sources */,
 				836B84351F4A4BE000B747BD /* EndlessCollectionView.swift in Sources */,
+				836B843D1F4A6E5C00B747BD /* FavoriteHandler.swift in Sources */,
 				8336B7A61F489012009E7990 /* SubcategoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
