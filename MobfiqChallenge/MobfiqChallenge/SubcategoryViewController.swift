@@ -15,7 +15,8 @@ class SubcategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = category.name
-        
+        self.navigationController?.navigationItem.backBarButtonItem?.title = ""
+        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
         self.tableView.tableFooterView = UIView()

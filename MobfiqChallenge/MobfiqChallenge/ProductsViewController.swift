@@ -12,12 +12,13 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
     UICollectionViewDelegateFlowLayout {
 
     var category :Category!
+    var searchTerm : String!
     
     var qtdProducts = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if ( category != nil ) {
             //busca por categoria
         }
@@ -26,10 +27,11 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
         self.navigationItem.hidesBackButton = false
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    
     
 
     

@@ -12,6 +12,7 @@ struct Constants {
     struct UserDefault {
         
         static let KEY_FAVORITE_PRODUCTS : String = "favorite_produts"
+        static let KEY_SEARCHES : String = "user_searches"
     }
     
     // MARK: - URLS

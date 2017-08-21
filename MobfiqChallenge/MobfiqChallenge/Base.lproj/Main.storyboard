@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--HOME-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="HomeViewController" customModule="MobfiqChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,29 +20,11 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEf-LK-CUe">
-                                <rect key="frame" x="0.0" y="-10" width="375" height="74"/>
-                                <color key="backgroundColor" red="0.93597930669999996" green="0.14181265230000001" blue="0.1072837785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.93597930669999996" green="0.14181265230000001" blue="0.1072837785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="MOBFIQ CHALLENGE" prompt=" " id="vAV-yl-xML">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="ewc-eb-Qr3">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <segue destination="WAZ-zi-oYL" kind="presentation" id="Gxz-gk-4tl"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rlN-mh-GIO">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="F7s-2w-4Fr">
                                     <size key="itemSize" width="150" height="300"/>
@@ -212,23 +194,27 @@
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rlN-mh-GIO" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="37s-zq-3mu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mEf-LK-CUe" secondAttribute="trailing" constant="-16" id="4QJ-OZ-awo"/>
-                            <constraint firstItem="rlN-mh-GIO" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="44" id="Iw7-jR-USF"/>
+                            <constraint firstItem="rlN-mh-GIO" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="Iw7-jR-USF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rlN-mh-GIO" secondAttribute="trailing" constant="-16" id="Myc-nG-28E"/>
-                            <constraint firstItem="mEf-LK-CUe" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="-30" id="fLp-Dy-ziY"/>
-                            <constraint firstItem="mEf-LK-CUe" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="jwC-yh-Ozb"/>
                             <constraint firstItem="rlN-mh-GIO" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="yOm-Dh-Qav"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="HOME" id="r9D-FR-juh">
+                        <barButtonItem key="backBarButtonItem" title=" " id="JLx-Ll-L34"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="0gl-LN-DKW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="WAZ-zi-oYL" kind="show" id="djF-1q-DEW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="rlN-mh-GIO" id="29T-YU-tPi"/>
-                        <segue destination="vRS-XI-RD2" kind="show" identifier="goToProducts" id="Rss-vO-la9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-474.39999999999998" y="-1113.1934032983509"/>
+            <point key="canvasLocation" x="464.80000000000001" y="-1113.1934032983509"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="8tx-zM-iiH">
@@ -239,11 +225,11 @@
                         <viewControllerLayoutGuide type="bottom" id="H4Z-gx-mv1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8AM-JH-BmO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" prompt=" " placeholder="O que você produra?" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22a-kO-9fE">
-                                <rect key="frame" x="0.0" y="-10" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="-30" width="375" height="75"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="barTintColor" red="0.93597930669999996" green="0.14181265230000001" blue="0.1072837785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -252,7 +238,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="seT-Fu-bn0">
-                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="509"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
@@ -275,7 +261,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="DGD-ZN-zlc" id="fha-YE-Ch9"/>
                         <outlet property="searchbar" destination="22a-kO-9fE" id="3AJ-rE-fRi"/>
-                        <segue destination="vRS-XI-RD2" kind="show" identifier="goToProducts" id="2aE-eb-q6a"/>
+                        <segue destination="IGI-VL-Xpc" kind="show" identifier="goToProducts" id="JQS-QB-DzB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbG-m9-2Hf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,7 +292,7 @@
                         <viewControllerLayoutGuide type="top" id="AHT-72-e96"/>
                         <viewControllerLayoutGuide type="bottom" id="ylz-IM-LMC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="m4w-MQ-Dnw">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="m4w-MQ-Dnw">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -590,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNF-im-GvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2191.1999999999998" y="-1113.1934032983509"/>
+            <point key="canvasLocation" x="3130.4000000000001" y="-1113.1934032983509"/>
         </scene>
         <!--Produto-->
         <scene sceneID="Swl-lX-J0g">
@@ -613,7 +599,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgi-8K-JOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2930.4000000000001" y="-1114.0929535232385"/>
+            <point key="canvasLocation" x="3869.5999999999999" y="-1114.0929535232385"/>
         </scene>
         <!--Categorias-->
         <scene sceneID="wg7-f3-ORb">
@@ -670,7 +656,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="vRS-XI-RD2" kind="show" identifier="goToProducts" id="YtN-0E-sGf"/>
+                        <segue destination="IGI-VL-Xpc" kind="show" identifier="goToProducts" id="k2V-cv-ozT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7j-ne-a00" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -691,7 +677,7 @@
                         <color key="selectedImageTintColor" red="0.93597930669999996" green="0.14181265230000001" blue="0.1072837785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="li9-oY-gZj"/>
+                        <segue destination="8OL-RJ-I9v" kind="relationship" relationship="viewControllers" id="li9-oY-gZj"/>
                         <segue destination="zB1-US-NXU" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
@@ -722,12 +708,13 @@
             </objects>
             <point key="canvasLocation" x="-1258" y="466"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="rh9-gG-ao3">
+        <!--Home-->
+        <scene sceneID="64v-4H-pMb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="vRS-XI-RD2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8OL-RJ-I9v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="MDf-lK-pYs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="XMs-gM-rtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.93597930669999996" green="0.14181265230000001" blue="0.1072837785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -738,12 +725,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IGI-VL-Xpc" kind="relationship" relationship="rootViewController" id="SNO-ab-yi1"/>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="osH-Ag-7q7"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xY8-ig-ine" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t48-3g-Wx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="-1113.1934032983509"/>
+            <point key="canvasLocation" x="-474.39999999999998" y="-1113.1934032983509"/>
         </scene>
     </scenes>
     <resources>
@@ -755,7 +742,7 @@
         <image name="promo" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gxz-gk-4tl"/>
-        <segue reference="Rss-vO-la9"/>
+        <segue reference="djF-1q-DEW"/>
+        <segue reference="JQS-QB-DzB"/>
     </inferredMetricsTieBreakers>
 </document>
