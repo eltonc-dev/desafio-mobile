@@ -22,6 +22,9 @@
 		836B843A1F4A66BF00B747BD /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B84391F4A66BF00B747BD /* ProductCollectionViewCell.swift */; };
 		836B843D1F4A6E5C00B747BD /* FavoriteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B843C1F4A6E5C00B747BD /* FavoriteHandler.swift */; };
 		836B843F1F4A74C200B747BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836B843E1F4A74C200B747BD /* Constants.swift */; };
+		83C59ECB1F4A809E00C37FB3 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C59ECA1F4A809E00C37FB3 /* RequestHelper.swift */; };
+		83C59ECD1F4A83E600C37FB3 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C59ECC1F4A83E600C37FB3 /* RequestHandler.swift */; };
+		83C59ED01F4A8D2800C37FB3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C59ECF1F4A8D2800C37FB3 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		836B84391F4A66BF00B747BD /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		836B843C1F4A6E5C00B747BD /* FavoriteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteHandler.swift; sourceTree = "<group>"; };
 		836B843E1F4A74C200B747BD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		83C59ECA1F4A809E00C37FB3 /* RequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
+		83C59ECC1F4A83E600C37FB3 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		83C59ECF1F4A8D2800C37FB3 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 		8336B7871F47BA50009E7990 /* MobfiqChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				83C59ECE1F4A8CEE00C37FB3 /* Models */,
 				836B843B1F4A6E2800B747BD /* Protocols */,
 				836B84361F4A648300B747BD /* Utils */,
 				836B84331F4A4B6900B747BD /* Extensions */,
@@ -122,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				836B843E1F4A74C200B747BD /* Constants.swift */,
+				83C59ECA1F4A809E00C37FB3 /* RequestHelper.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -130,8 +138,17 @@
 			isa = PBXGroup;
 			children = (
 				836B843C1F4A6E5C00B747BD /* FavoriteHandler.swift */,
+				83C59ECC1F4A83E600C37FB3 /* RequestHandler.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		83C59ECE1F4A8CEE00C37FB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83C59ECF1F4A8D2800C37FB3 /* Category.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C59ECD1F4A83E600C37FB3 /* RequestHandler.swift in Sources */,
 				8336B78D1F47BA50009E7990 /* CategoryViewController.swift in Sources */,
+				83C59ECB1F4A809E00C37FB3 /* RequestHelper.swift in Sources */,
 				8336B7891F47BA50009E7990 /* AppDelegate.swift in Sources */,
 				836B843A1F4A66BF00B747BD /* ProductCollectionViewCell.swift in Sources */,
 				8336B7A01F47DF06009E7990 /* SearchViewController.swift in Sources */,
@@ -216,6 +235,7 @@
 				836B843F1F4A74C200B747BD /* Constants.swift in Sources */,
 				8336B7A91F494315009E7990 /* ProductsHeaderCollectionViewCell.swift in Sources */,
 				8336B7A41F488FFB009E7990 /* ProductDetailViewController.swift in Sources */,
+				83C59ED01F4A8D2800C37FB3 /* Category.swift in Sources */,
 				836B84351F4A4BE000B747BD /* EndlessCollectionView.swift in Sources */,
 				836B843D1F4A6E5C00B747BD /* FavoriteHandler.swift in Sources */,
 				8336B7A61F489012009E7990 /* SubcategoryViewController.swift in Sources */,

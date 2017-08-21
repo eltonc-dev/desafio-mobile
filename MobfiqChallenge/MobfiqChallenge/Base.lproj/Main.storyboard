@@ -306,7 +306,7 @@
                         <viewControllerLayoutGuide type="top" id="AHT-72-e96"/>
                         <viewControllerLayoutGuide type="bottom" id="ylz-IM-LMC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="m4w-MQ-Dnw">
+                    <view key="view" contentMode="scaleToFill" id="m4w-MQ-Dnw">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -648,6 +648,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="kgq-oW-bPE"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="FyM-lz-ied" id="hrd-r6-ehr"/>
                         <segue destination="vcN-v2-0SD" kind="show" identifier="goToSubcategory" id="z3o-Lz-pBB"/>
                     </connections>
                 </viewController>

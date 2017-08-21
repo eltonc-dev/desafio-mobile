@@ -11,12 +11,19 @@ import UIKit
 class ProductsViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout {
 
+    var category :Category!
+    
     var qtdProducts = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if ( category != nil ) {
+            //busca por categoria
+        }
+        
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        self.navigationItem.hidesBackButton = false
     }
 
     override func didReceiveMemoryWarning() {

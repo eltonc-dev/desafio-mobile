@@ -10,17 +10,16 @@ import UIKit
 
 class SubcategoryViewController: UITableViewController {
 
+    var category : Category!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = category.name
+        
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        
+        self.tableView.tableFooterView = UIView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     
     // MARK: - Table
@@ -29,7 +28,7 @@ class SubcategoryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.category.subCategories.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,12 +40,29 @@ class SubcategoryViewController: UITableViewController {
             cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
             
         }
-        cell.textLabel?.text = "Sub categoria \(indexPath.row + 1)"
+        if( indexPath.row == 0 ) {
+            cell.backgroundColor = UIColor.groupTableViewBackground
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        
+        let currentCategory = self.category.subCategories[indexPath.row]
+        
+        cell.textLabel?.text = currentCategory.name
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "goToProducts", sender: nil)
+        let currentCategory = self.category.subCategories[indexPath.row]
+        self.performSegue(withIdentifier: "goToProducts", sender: currentCategory)
+    }
+    
+    // MARK: - segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let productsVC : ProductsViewController = segue.destination as! ProductsViewController
+        
+        productsVC.category = sender as! Category
+        
     }
  
 

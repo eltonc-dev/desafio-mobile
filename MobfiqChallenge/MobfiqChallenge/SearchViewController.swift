@@ -9,11 +9,12 @@
 import UIKit
 
 class SearchViewController: UIViewController , UISearchBarDelegate , UITableViewDelegate ,
-    UITableViewDataSource {
+    UITableViewDataSource  {
 
     @IBOutlet weak var searchbar: UISearchBar!
     
     var mySearches : NSMutableArray?
+    
     
     
     override func viewDidLoad() {
@@ -58,5 +59,6 @@ class SearchViewController: UIViewController , UISearchBarDelegate , UITableView
     }
     
     
+        
 
 }

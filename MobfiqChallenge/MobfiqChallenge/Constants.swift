@@ -8,8 +8,19 @@
 
 struct Constants {
     
+    // MARK: - USER DEFAULT
     struct UserDefault {
         
-        static let KEY_FAVORITE_PRODUCTS = "favorite_produts"
+        static let KEY_FAVORITE_PRODUCTS : String = "favorite_produts"
+    }
+    
+    // MARK: - URLS
+    struct Url {
+        static let CATEGORY : String = "https://desafio.mobfiq.com.br/StorePreference/CategoryTree"
+    }
+    
+    // MARK: - Category
+    struct Category {
+        static let Categories : String = "Categories"
     }
 }
