@@ -7,23 +7,43 @@
 //
 
 import UIKit
+import Foundation
 
 class ProductsViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource,
-    UICollectionViewDelegateFlowLayout {
+    UICollectionViewDelegateFlowLayout,
+    FavoriteHandler,
+    RequestHandler {
 
+    var favoriteProducts : [String] = [String]()
+    
     var category :Category!
     var searchTerm : String!
+    
+    var offset: Int = 0
+    var itensPerPage = 10
+    var sessionTask : URLSessionDataTask?
+    var productList : [Product] = []
+    
+    var totalProducts : Int = 0
+    var nameCategoryOrTerm : String = ""
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var qtdProducts = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if ( category != nil ) {
-            //busca por categoria
+        if let favorites =  UserDefaults.standard.array(forKey: Constants.UserDefault.KEY_FAVORITE_PRODUCTS) as? [String] {
+            self.favoriteProducts = favorites
+        }
+        if ( self.category != nil ) {
+            self.nameCategoryOrTerm = self.category.name
+        } else if ( self.searchTerm != nil ) {
+            self.nameCategoryOrTerm = self.searchTerm
         }
         
-        
+        self.loadProducts()
     }
     
     
@@ -36,8 +56,30 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
     }
     
     
-    
+    // MARK: - HELPER FUNCTIONS
+    func nextPage() {
+        self.offset = self.offset + self.itensPerPage
+        //request
+        self.loadProducts()
+    }
 
+    func loadProducts() {
+        let params :  NSMutableDictionary = NSMutableDictionary()
+        params.setValue(self.offset, forKey: Constants.UrlParams.OFFSET)
+        params.setValue(self.itensPerPage, forKey: Constants.UrlParams.SIZE)
+        
+        
+        if ( self.category != nil ) {
+            //busca por categoria
+            params.setValue(self.category.apiQuery, forKey: Constants.UrlParams.API_QUERY)
+            
+        } else if( self.searchTerm != nil ) {
+            params.setValue(self.searchTerm, forKey: Constants.UrlParams.QUERY)
+        }
+        
+        self.sessionTask = RequestHelper.postRequest(on: Constants.Url.PRODUCTS, with: params, and: self)
+
+    }
     
     // MARK: - Collection
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -45,16 +87,18 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return qtdProducts
+        return self.productList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        var view : UICollectionReusableView
+        var view : ProductsHeaderCollectionReusableView
         
-        view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "products_header", for: indexPath)
+        view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "products_header", for: indexPath) as! ProductsHeaderCollectionReusableView
             
         
+        view.totalProducts.text = String(self.totalProducts)
+        view.categoryName.text = self.nameCategoryOrTerm
         
         return view
     }
@@ -84,17 +128,156 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cellId = "product_cell"
-        var cell : UICollectionViewCell!
-        cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        var cell : ProductCollectionViewCell!
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProductCollectionViewCell
         
+        let product = self.productList[indexPath.row]
+        
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProductCollectionViewCell
+        cell.loader.hidesWhenStopped = true
+        
+        cell.favoriteHandler = self
+        cell.favoriteButton.tag = Int( product.id )!
+        
+        if( self.favoriteProducts.contains( product.id ) ) {
+            cell.favoriteButton.isSelected = true
+        } else {
+            cell.favoriteButton.isSelected = false
+        }
+        
+        if( product.mainImage == nil && cell.imageRequest == nil ) {
+            cell.loader.startAnimating()
+            _ = RequestHelper.loadImageFrom(imageUrl: product.getImageUrlFromItemAtPosition(position: 0 , size: Product.SizeImages.THUMB ), with: self , and: indexPath.row )
+            
+        } else {
+            
+            if( product.mainImage != nil ) {
+                cell.loader.stopAnimating()
+                cell.productImageView.image = product.mainImage
+            }
+            
+            if( cell.imageRequest == nil ) {
+                cell.loader.stopAnimating()
+            }
+        }
+        
+        
+        
+        
+        cell.productName.text = product.name
+        
+        cell.productOldPrice.text = "R$ \(String(format: "%.2f", arguments: [product.listPrice!]))"
+        cell.productPrice.text = "R$ \(String(format: "%.2f", arguments: [product.price!]))"
+        
+        cell.productBestPaymentType.text = product.bestInstallment
         
         return cell
         
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("Scroll")
+        
+        
+        if( scrollView.contentOffset.y  > scrollView.contentSize.height / 2 ) {
+            
+            
+            if( !self.collectionView.isLoadingContent() ) {
+                self.collectionView.startLoadingIndicator()
+                self.nextPage()
+            }
+            
+        }
     }
+    
+    // MARK: - FavoriteHandler Methods
+    func saveAsFavorite(_ element: Any) {
+        
+        self.favoriteProducts.append( String((element as! UIButton).tag) )
+        UserDefaults.standard.set(self.favoriteProducts, forKey: Constants.UserDefault.KEY_FAVORITE_PRODUCTS)
+        
+    }
+    
+    func removeFromFavorite(_ element: Any) {
+        
+        if( self.favoriteProducts.contains( String((element as! UIButton).tag) ) ) {
+            let index = self.favoriteProducts.index(of: String((element as! UIButton).tag)  )
+            if(index! < 0 ) {
+                self.favoriteProducts.remove(at: index!)
+                UserDefaults.standard.set(self.favoriteProducts, forKey: Constants.UserDefault.KEY_FAVORITE_PRODUCTS)
+            }
+        }
+        
+    }
+    
+    // MARK: - Request Handler Methods
+    
+    func requestSuccess(with data: Any, forRequest request: URLRequest) {
+        
+        DispatchQueue.main.async(execute: {
+            if( self.collectionView.isLoadingContent() ) {
+                self.collectionView.stopLoadingIndicator()
+            }
+        })
+        
+        let info : NSDictionary = data as! NSDictionary
+        
+        if( info.object(forKey: "Total") != nil ) {
+            self.totalProducts = info.object(forKey: "Total") as! Int
+            //self.collectionView.reloadSections(IndexSet(0 ... 1))
+        }
+        
+        if( info.object(forKey: Constants.UrlParams.PRODUCTS) != nil ) {
+            let products = info.object(forKey: Constants.UrlParams.PRODUCTS) as! NSArray
+            for p in products {
+                let productDic : NSDictionary  = p as! NSDictionary
+                let product = Product(info: productDic)
+                self.productList.append(product)
+                
+                DispatchQueue.main.async(execute: {
+                    self.collectionView.reloadData()
+                })
+            }
+        }
+        
+    }
+    func requestSuccess(with data: Any, withIdentifier ident: String) {
+        //usado para imagens
+        let product : Product = self.productList[Int(ident)!]
+        product.mainImage = data as? UIImage
+        DispatchQueue.main.async(execute: {
+            self.collectionView.reloadData()
+        })
+        
+    }
+    
+    func requestFailed(with error: Error, forRequest request: URLRequest) {
+        print(error.localizedDescription)
+        
+        
+        DispatchQueue.main.async(execute: {
+            if( self.collectionView.isLoadingContent() ) {
+                self.collectionView.stopLoadingIndicator()
+            }
+        })
+    }
+    
+    func requestFailed(with error : Error, withIdentifier  ident : String ) {
+        
+        let indexPath : IndexPath = IndexPath(item: Int(ident)!, section: 1)
+        if let collectionViewCell  : ProductCollectionViewCell = self.collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
+            
+            DispatchQueue.main.async(execute: {
+                if( self.collectionView.isLoadingContent() ) {
+                    self.collectionView.stopLoadingIndicator()
+                }
+                
+                collectionViewCell.imageRequest = nil
+                collectionViewCell.loader.stopAnimating()
+            })
+        }
+
+    }
+
  
 
 }

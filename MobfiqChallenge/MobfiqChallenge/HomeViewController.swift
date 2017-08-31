@@ -24,7 +24,7 @@ class HomeViewController: UIViewController ,
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var qtdProducts = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,7 +111,7 @@ class HomeViewController: UIViewController ,
         
         if( product.mainImage == nil && cell.imageRequest == nil ) {
             cell.loader.startAnimating()
-            RequestHelper.loadImageFrom(imageUrl: product.getImageUrlFromItemAtPosition(position: 0 , size: Product.SizeImages.THUMB ), with: self , and: indexPath.row )
+            _ = RequestHelper.loadImageFrom(imageUrl: product.getImageUrlFromItemAtPosition(position: 0 , size: Product.SizeImages.THUMB ), with: self , and: indexPath.row )
             
         } else {
             

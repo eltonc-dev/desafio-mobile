@@ -30,6 +30,7 @@ struct Constants {
         static let OFFSET : String = "Offset"
         static let SIZE : String = "Size"
         static let QUERY : String = "Query"
+        static let API_QUERY : String = "ApiQuery"
         
         static let PRODUCTS : String = "Products"
         static let TOTAL_PRODUCTS : String = "Total"

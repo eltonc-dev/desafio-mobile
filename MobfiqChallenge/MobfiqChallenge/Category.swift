@@ -13,6 +13,7 @@ class Category: NSObject {
 
     var id : Int!
     var name : String!
+    var apiQuery : String!
     var subCategories : [Category]!
     
     init( info : NSDictionary? ) {
@@ -34,9 +35,16 @@ class Category: NSObject {
                         self.subCategories.append(subCategory)
                     }
                 }
-                
-                
-                
+            }
+            
+            if( info?.object(forKey: "Redirect") != nil ){
+                let redirect = info?.object(forKey: "Redirect") as! NSDictionary
+                if( redirect.object(forKey: "SearchCriteria") != nil ) {
+                    let criteria = redirect.object(forKey: "SearchCriteria") as! NSDictionary
+                    if( criteria.object(forKey: "ApiQuery") != nil ) {
+                        self.apiQuery = criteria.object(forKey: "ApiQuery") as! String
+                    }
+                }
             }
             
         }

@@ -10,4 +10,6 @@ import UIKit
 
 class ProductsHeaderCollectionReusableView: UICollectionReusableView {
     
+    @IBOutlet weak var categoryName: UILabel!
+    @IBOutlet weak var totalProducts: UILabel!
 }
