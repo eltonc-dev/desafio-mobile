@@ -22,6 +22,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productBestPaymentType: UILabel!
     
+    var imageRequest : URLSessionDataTask?
+    
     
     @IBAction func toggleFavorite(_ sender: UIButton) {
         

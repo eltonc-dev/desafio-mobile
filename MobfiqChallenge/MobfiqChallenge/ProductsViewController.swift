@@ -23,12 +23,16 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
             //busca por categoria
         }
         
-        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
-        self.navigationItem.hidesBackButton = false
+        
     }
+    
+    
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        self.navigationItem.hidesBackButton = false
     }
     
     

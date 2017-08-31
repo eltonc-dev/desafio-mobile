@@ -17,7 +17,23 @@ struct Constants {
     
     // MARK: - URLS
     struct Url {
-        static let CATEGORY : String = "https://desafio.mobfiq.com.br/StorePreference/CategoryTree"
+        
+        static let BASE : String = "https://desafio.mobfiq.com.br"
+        
+        static let CATEGORY : String = "\(Constants.Url.BASE)/StorePreference/CategoryTree"
+        static let PRODUCTS : String = "\(Constants.Url.BASE)/Search/Criteria"
+    }
+    
+    // MARK: - URL PARAMS
+    struct UrlParams {
+        
+        static let OFFSET : String = "Offset"
+        static let SIZE : String = "Size"
+        static let QUERY : String = "Query"
+        
+        static let PRODUCTS : String = "Products"
+        static let TOTAL_PRODUCTS : String = "Total"
+        
     }
     
     // MARK: - Category

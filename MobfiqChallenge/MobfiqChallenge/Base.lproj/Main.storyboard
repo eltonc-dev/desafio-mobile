@@ -43,7 +43,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-79-0LF">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="300"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeteira" translatesAutoresizingMaskIntoConstraints="NO" id="ydg-9I-UdQ">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ydg-9I-UdQ">
                                                             <rect key="frame" x="8" y="58" width="134" height="134"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -714,7 +714,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8OL-RJ-I9v" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="XMs-gM-rtQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="XMs-gM-rtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.93597930669999996" green="0.14181265230000001" blue="0.1072837785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -34,11 +34,12 @@ class SearchViewController: UIViewController , UISearchBarDelegate , UITableView
         super.viewWillAppear(animated)
         self.searchbar.becomeFirstResponder()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        self.navigationItem.backBarButtonItem?.title = ""
     }
 
     // MARK: - Search
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -53,9 +54,7 @@ class SearchViewController: UIViewController , UISearchBarDelegate , UITableView
         
         self.performSegue(withIdentifier: "goToProducts", sender: searchBar.text!)
         
-        /*let productsVC : ProductsViewController = ProductsViewController()
-        productsVC.searchTerm = searchBar.text!
-        self.present(productsVC, animated: true, completion: nil)*/
+    
         
     }
     
@@ -92,9 +91,11 @@ class SearchViewController: UIViewController , UISearchBarDelegate , UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
         let index = self.mySearches.count - 1
         let currentSearch = self.mySearches[ index - indexPath.row ]
         self.performSegue(withIdentifier: "goToProducts", sender: currentSearch)
+        
         
     }
     

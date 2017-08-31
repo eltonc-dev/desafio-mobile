@@ -9,7 +9,13 @@
 import UIKit
 
 class CategoryViewController: UIViewController , UITableViewDelegate ,
-    UITableViewDataSource , RequestHandler {
+UITableViewDataSource , RequestHandler {
+    
+    
+    
+    
+    
+    
 
     var requestTask : URLSessionDataTask?
     var categoryList : [Category] = [Category]()
@@ -101,6 +107,19 @@ class CategoryViewController: UIViewController , UITableViewDelegate ,
     
     func requestFailed(with error: Error, forRequest request: URLRequest) {
         print(error.localizedDescription)
+    }
+    
+   
+    
+   
+    
+    func requestFailed(with error : Error, withIdentifier  ident : String ) {
+        //sem implementação
+    }
+    
+    func requestSuccess(with data: Any, withIdentifier ident: String) {
+        //sem implementação
+        
     }
 
 
