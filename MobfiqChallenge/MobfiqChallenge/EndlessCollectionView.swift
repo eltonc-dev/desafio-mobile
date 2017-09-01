@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UICollectionView {
+extension UICollectionView  {
     
     
     func isLoadingContent() -> Bool {

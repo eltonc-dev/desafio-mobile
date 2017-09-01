@@ -27,6 +27,15 @@ UITableViewDataSource , RequestHandler {
         super.viewDidLoad()
         
         if( RequestHelper.hasInternetConnection() ) {
+            let loader : UIActivityIndicatorView  = UIActivityIndicatorView(frame: CGRect(x: (self.view.frame.width + 30) / 2 , y: 30 , width: 30, height: 30))
+            
+            loader.hidesWhenStopped = true
+            loader.startAnimating()
+            loader.color = UIColor.red
+            
+            loader.tag = 100
+            self.view.addSubview(loader)
+            
             self.requestTask =  RequestHelper.getRequest(on: Constants.Url.CATEGORY , and: self)
         } else {
             //sem internet 
@@ -90,6 +99,9 @@ UITableViewDataSource , RequestHandler {
     
     func requestSuccess(with data: Any, forRequest request: URLRequest) {
     
+        DispatchQueue.main.async {
+            self.view.viewWithTag(100)?.removeFromSuperview()
+        }
         
         let info : NSDictionary = data as! NSDictionary
         if(info.object(forKey: Constants.Category.Categories) != nil ){
@@ -106,18 +118,26 @@ UITableViewDataSource , RequestHandler {
     }
     
     func requestFailed(with error: Error, forRequest request: URLRequest) {
+        DispatchQueue.main.async {
+            self.view.viewWithTag(100)?.removeFromSuperview()
+        }
+        
         print(error.localizedDescription)
     }
     
    
-    
-   
-    
     func requestFailed(with error : Error, withIdentifier  ident : String ) {
+        DispatchQueue.main.async {
+            self.view.viewWithTag(100)?.removeFromSuperview()
+        }
+        
         //sem implementação
     }
     
     func requestSuccess(with data: Any, withIdentifier ident: String) {
+        DispatchQueue.main.async {
+            self.view.viewWithTag(100)?.removeFromSuperview()
+        }
         //sem implementação
         
     }

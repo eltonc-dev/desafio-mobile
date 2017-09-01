@@ -44,11 +44,12 @@ class Product: NSObject {
                     self.listPrice = sellerItem.object(forKey: "ListPrice") as! Float
                     self.price = sellerItem.object(forKey: "Price") as! Float
                     if ( sellerItem.object(forKey: "BestInstallment") != nil ) {
-                        let bestInstallment = sellerItem.object(forKey: "BestInstallment") as! NSDictionary
-                        let strBestInstallment = "\(String(describing: bestInstallment.object(forKey: "Count")!))x de R$ \(String(describing: bestInstallment.object(forKey: "Value")!))"
+                        if let bestInstallment = sellerItem.object(forKey: "BestInstallment") as? NSDictionary {
+                            let strBestInstallment = "\(String(describing: bestInstallment.object(forKey: "Count")!))x de R$ \(String(describing: bestInstallment.object(forKey: "Value")!))"
                         
                         
-                        self.bestInstallment = strBestInstallment
+                            self.bestInstallment = strBestInstallment
+                        }
                     }
                     
                 }

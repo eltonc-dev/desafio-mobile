@@ -99,7 +99,10 @@ class SearchViewController: UIViewController , UISearchBarDelegate , UITableView
         
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let productsVC : ProductsViewController  = segue.destination as! ProductsViewController
+        productsVC.searchTerm = sender as! String
+    }
     
         
 

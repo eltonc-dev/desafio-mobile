@@ -660,10 +660,10 @@
         <scene sceneID="CNq-lC-eXy">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="vcN-v2-0SD" customClass="SubcategoryViewController" customModule="MobfiqChallenge" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wZx-JD-Ikv">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wZx-JD-Ikv">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="dataSource" destination="vcN-v2-0SD" id="Rcw-FF-GML"/>
                             <outlet property="delegate" destination="vcN-v2-0SD" id="X1m-SH-RKt"/>
@@ -756,6 +756,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="djF-1q-DEW"/>
-        <segue reference="JQS-QB-DzB"/>
+        <segue reference="k2V-cv-ozT"/>
     </inferredMetricsTieBreakers>
 </document>
