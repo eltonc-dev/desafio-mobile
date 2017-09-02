@@ -175,6 +175,20 @@ class ProductsViewController: UIViewController , UICollectionViewDelegate , UICo
         
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let product = self.productList[indexPath.row]
+        
+        
+        let productsDetails : ProductDetailViewController =  UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "productsDetails") as! ProductDetailViewController
+        productsDetails.product = product
+        self.navigationController?.pushViewController(productsDetails, animated: true)
+        
+    }
+
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         
